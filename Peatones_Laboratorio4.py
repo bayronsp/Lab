@@ -127,6 +127,9 @@ def main():
 
     # Mapa de calor
     st.header('Mapa de Calor')
+    st.write("""En primer lugar, se realizó un mapa de calor para identificar 
+    los caminos más recorridos por los peatones, 
+    considerando sus cambios en las coordenadas X e Y de frame a frame""")
     mapa_calor(df, bins_x, bins_y)
 
     # Dividir por peatón
@@ -153,6 +156,8 @@ def main():
         st.write("Bins eje x =", bins_velocidad)
 
     st.header('Gráfico de Velocidad')
+    st.write("""Para analizar las velocidades de los peatones a lo largo de su camino por le tunel
+    se utilizó un histograma, donde se puede evidenciar que los peatones siguen una distribución normal.""")
     hist_velocidad(df_filtered, bins_velocidad)
     
     # Promedio de sk
@@ -164,6 +169,7 @@ def main():
     desv_sk = round(df_filtered['sk'].std(),4)
 
     st.header('Estadísticas descriptivas de sk')
+    st.write("""Luego de haber calculado el parámetro sk, se realizó un estudió estadisticos de esta, para así analizar su comportamiento""")
     data = {'Estadístico': ['Promedio', 'Mínimo', 'Máximo', 'Mediana', 'Desviación Estándar', 'Varianza'],
             'Valor': [promedio_sk, min_sk, max_sk, mediana_sk, desv_sk, varianza_sk]}
 
@@ -172,6 +178,7 @@ def main():
 
     # Scatter plot
     st.header('Scatter Plot: sk vs Velocidad de Peatón')
+    st.write("Finalmente se hace un diagrama de dispersión para comparar la velocidad con el sk calculado.")
     scatter_plot(df_filtered['sk'], df_filtered['velocidad'])
 
     # Mostrar los primeros 10 registros de df_filtered
